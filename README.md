@@ -67,7 +67,7 @@ on Debian boxes)
 #### Provide your netid/password (needed to connect to PointCarre)
 
     echo 'NETID = "<your netid>"' > local_config.py
-    echo 'PASSWORD = "<your password>"' > local_config.py
+    echo 'PASSWORD = "<your password>"' >> local_config.py
 
     mkdir PointCarre
     python fs.py PointCarre
