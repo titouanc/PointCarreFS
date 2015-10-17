@@ -1,0 +1,4 @@
+*.pyc
+ve*
+.session
+local_config.py
