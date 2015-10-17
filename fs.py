@@ -1,10 +1,12 @@
 import errno
 import stat
+import os
 from time import time
 from fuse import FUSE, FuseOSError, Operations, LoggingMixIn
 from pointcarre import PointCarre
 
 Now = time()
+Uid, Gid = os.getuid(), os.getgid()
 
 
 def wrap_enoent(func):
@@ -38,16 +40,16 @@ class Node(object):
                 child.tree(indent + "  ")
 
     def stat(self):
-        mode = (0444 | stat.S_IFREG) if self.is_leaf else (0555 | stat.S_IFDIR)
+        mode = (0644 | stat.S_IFREG) if self.is_leaf else (0755 | stat.S_IFDIR)
         return {
             'st_mode': mode,
             'st_ctime': Now,
             'st_mtime': Now,
             'st_atime': Now,
             'st_nlink': 2,
-            'st_uid': 0,
-            'st_gid': 0,
-            'st_size': 0,
+            'st_uid': Uid,
+            'st_gid': Gid,
+            'st_size': 4096,
         }
 
 
