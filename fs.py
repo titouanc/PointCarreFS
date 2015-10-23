@@ -138,5 +138,5 @@ if __name__ == "__main__":
         print('usage: %s <mountpoint>' % argv[0])
         exit(1)
 
-    fs = FileSystem(PointCarre.cached_session())
+    fs = FileSystem(PointCarre())
     fuse = FUSE(fs, argv[1], foreground=True)
