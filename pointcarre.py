@@ -72,7 +72,8 @@ class PointCarre(requests.Session):
         params = [
             ('application', 'application%5Cweblcms'), ('go', 'course_viewer'),
             ('tool', 'document'), ('pub_type', '2')] + [
-            tuple(map(str, p)) for p in params.iteritems()]
+            tuple(map(str, p)) for p in params.iteritems()] + [
+            ('object_publication_table_per_page', 'all')]
 
         get_params = '&'.join('%s=%s' % p for p in params)
         url = "https://pointcarre.vub.ac.be/index.php?" + get_params
